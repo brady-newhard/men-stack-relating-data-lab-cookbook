@@ -44,6 +44,6 @@ app.get('/vip-lounge', (req, res) => {
 
 app.use('/auth', authController);
 
-app.listen(port, () => {
-  console.log(`The express app is ready on port ${port}!`);
-});
+app.listen(process.env.PORT, () => {
+  console.log(`🎧Listening on http://localhost:${process.env.PORT}`);
+})
