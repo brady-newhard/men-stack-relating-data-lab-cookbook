@@ -6,7 +6,7 @@ const User = require('../models/user.js');
 // Landing Page
 router.get('/users/:userId/foods', async (req, res) => {
     const user = await User.findById(req.params.userId);
-    res.json(user.pantry);
+    res.send(user.pantry);
 });
 
 // Index
@@ -24,5 +24,12 @@ router.get('/new', (req, res) => {
     res.render('foods/new.ejs', { userId: req.params.userId});
 });
  
+// Post & Create
+router.post('/users/:userId/foods', async (req, res) => {
+    const user = await User.findById(req.params.userId);
+    user.pantry.push(req.body);
+    await newFood.save();
+    res.send(user.pantry);
+});
 
 module.exports = router;
