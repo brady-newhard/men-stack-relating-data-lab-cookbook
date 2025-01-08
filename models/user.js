@@ -4,7 +4,6 @@ const foodSchema = new mongoose.Schema({
   name: { 
     type: String, 
     required: true,
-    image: String
   }
 });
 
@@ -12,6 +11,7 @@ const userSchema = mongoose.Schema({
   username: {
     type: String,
     required: true,
+    unique: true
   },
   password: {
     type: String,
@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
   },
   pantry: {
     type: [foodSchema],
-    required: true,
+    default: []
  }
 });
 

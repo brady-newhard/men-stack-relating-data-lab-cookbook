@@ -1,0 +1,26 @@
+<!-- views/fruits/new.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a New Recipe</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <h1>Add a New Recipe to My Cookbook</h1>
+    <form action="/users/<%= userId %>/recipes" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" />
+      <label for="instructions">Instructions:</label>
+      <textarea name="instructions" id="instructions"></textarea>
+      <label for="ingredients">Ingredients:</label>
+      <textarea type="text" name="ingredients" id="ingredients"></textarea>
+      <button type="submit">Add Recipe</button>
+    </form>
+    <div>
+        <a href="/"><button>Home</button></a>
+    </div> 
+  </body>
+</html>

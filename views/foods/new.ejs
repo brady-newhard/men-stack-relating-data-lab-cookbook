@@ -6,16 +6,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add a New Food</title>
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
+    <%- include('../partials/_navbar.ejs') %>
     <h1>Add a New Food to My Pantry</h1>
-    <form action="/users/<%= userId %>/foods" method="POST">
-      <label for="name">Name:</label>
-      <input type="text" name="name" id="name" />
-      <button type="submit">Add Food</button>
-    </form>
+    <form action="/users/<%= user._id %>/foods" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required />
+        <button type="submit">Add Item</button>
+      </form>
     <div>
-        <a href="/"><button>Home</button></a>
-    </div> 
+      <a href="/"><button>Home</button></a>
+    </div>
   </body>
 </html>
