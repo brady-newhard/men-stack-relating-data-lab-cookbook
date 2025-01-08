@@ -42,3 +42,8 @@ h1 {
     font-size: 5rem; 
     text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.7);
 }
+
+.food-list {
+    list-style-type: none; 
+    padding: 0; 
+}

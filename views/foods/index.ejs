@@ -9,22 +9,18 @@
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Welcome to my Pantry</h1>
-    <% if (pantry.length > 0) { %>
-        <ul>
-          <% pantry.forEach((item) => { %>
-            <li>
-              <span>
-                <%= item.name %>
-                <form action="/users/<%= user._id %>/foods/<%= item._id %>?_method=DELETE" method="POST" style="display: inline;"><button type="submit">Delete</button>
-                </form>
-                <a href="/users/<%= user._id %>/foods/<%= item._id %>/edit"><button>Edit</button></a>
-              </span>
-            </li>
-          <% }) %>
-        </ul>
-      <% } else { %>
-        <p>No items in my pantry</p>
-      <% } %>
-    <a href='/users/<%= user._id %>/foods/new'><button>Add a New Food</button></a>
+    <ul class="food-list">
+      <% pantry.forEach((item) => { %>
+        <li>
+          <span>
+            <%= item.name %>
+            <form action="/users/<%= user._id %>/foods/<%= item._id %>?_method=DELETE" method="POST" style="display: inline;"><button type="submit">Delete</button>
+            </form>
+            <a href="/users/<%= user._id %>/foods/<%= item._id %>/edit"><button>Edit</button></a>
+          </span>
+        </li>
+      <% }) %>
+    </ul>
+<a href='/users/<%= user._id %>/foods/new'><button>Add a New Food</button></a>
 </body>
 </html>

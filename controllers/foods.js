@@ -21,34 +21,54 @@ router.get('/new', (req, res) => {
 
 // Post & Create a new food item
 router.post('/', async (req, res) => {
-    const user = await User.findById(req.session.user._id);
-    user.pantry.push(req.body);
-    await user.save();
-    res.redirect(`/users/${req.session.user._id}/foods`);
+    try {
+        const user = await User.findById(req.session.user._id);
+        user.pantry.push(req.body);
+        await user.save();
+        res.redirect(`/users/${req.session.user._id}/foods`);
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
 });
   
 // Edit Item Page
-router.get('/:itemId/edit', async (req, res) => { 
-    const user = await User.findById(req.session.user._id);
-    const food = user.pantry.id(req.params.itemId);
-    res.render('foods/edit.ejs', { food });
+router.get('/:itemId/edit', async (req, res) => {
+    try { 
+        const user = await User.findById(req.session.user._id);
+        const food = user.pantry.id(req.params.itemId);
+        res.render('foods/edit.ejs', { food });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
 });
   
 // Update
 router.put('/:itemId', async (req, res) => {
-    const user = await User.findById(req.session.user._id);
-    const food = user.pantry.id(req.params.itemId);
-    food.set(req.body);
-    await user.save();
-    res.redirect(`/users/${req.session.user._id}/foods`);
+    try {
+        const user = await User.findById(req.session.user._id);
+        const food = user.pantry.id(req.params.itemId);
+        food.set(req.body);
+        await user.save();
+        res.redirect(`/users/${req.session.user._id}/foods`);
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
 });
   
 // Delete
 router.delete('/:itemId', async (req, res) => {
-    const user = await User.findById(req.session.user._id);
-    user.pantry = user.pantry.filter((item) => item._id.toString() !== req.params.itemId);
-    await user.save();
-    res.redirect(`/users/${req.session.user._id}/foods`);
+    try {
+        const user = await User.findById(req.session.user._id);
+        user.pantry = user.pantry.filter((item) => item._id.toString() !== req.params.itemId);
+        await user.save();
+        res.redirect(`/users/${req.session.user._id}/foods`);
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
 });
   
 module.exports = router;
