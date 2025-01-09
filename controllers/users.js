@@ -17,8 +17,8 @@ router.get('/', async (req, res) => {
 // Show
 router.get('/:userId', async (req, res) => {
     try {
-      const users = await User.findById(req.session.user._id);
-      res.render('users/show.ejs', { users });
+      const user = await User.findById(req.params.userId);
+      res.render('users/show.ejs', { user });
     } catch (error) {
       console.log(error);
       res.redirect('/');
