@@ -47,3 +47,18 @@ h1 {
     list-style-type: none; 
     padding: 0; 
 }
+
+.user-list {
+    list-style-type: none; 
+    padding: 0; 
+}
+
+.user-link {
+    text-decoration: underline; 
+    color: white; 
+    font-size: 1rem; 
+    text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.7); 
+}
+.user-link:hover {
+    color: blue;
+}

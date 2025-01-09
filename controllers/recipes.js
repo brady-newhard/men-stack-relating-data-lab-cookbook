@@ -15,6 +15,18 @@ router.get('/new', (req, res) => {
   res.render('recipes/new.ejs', { userId: req.params.userId});
 });
 
+// Post & Create a new food item
+router.post('/', async (req, res) => {
+  try {
+      const newRecipe = new Recipe(req.body)
+      newRecipe = req.session.user._id;
+      await newRecipe.save();
+      res.redirect(`/users/${req.session.user._id}/recipes`);
+  } catch (error) {
+      console.log(error);
+      res.redirect('/');
+  }
+});
 module.exports = router;
 
 

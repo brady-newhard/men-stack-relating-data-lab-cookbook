@@ -10,6 +10,7 @@ const path = require('path');
 
 const authController = require('./controllers/auth.js');
 const foodsController = require('./controllers/foods.js');
+const usersController = require('./controllers/users.js');
 const recipesController = require('./controllers/recipes.js');
 const ingredientsController = require('./controllers/ingredients.js');
 
@@ -46,6 +47,7 @@ app.use(passUserToView);
 app.use('/auth', authController); 
 app.use(isSignedIn); 
 app.use('/users/:userId/foods', foodsController);
+app.use('/users', usersController);
 app.use('/users/:userId/recipes', recipesController);
 app.use('/users/:userId/ingredients', ingredientsController); 
 
